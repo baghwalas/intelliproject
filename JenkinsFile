@@ -1,0 +1,18 @@
+pipeline {
+    agent none
+    stages {
+        stage('Test on Linux') {
+            agent { label 'LinuxSlave' }
+            steps {
+                echo "I am on a linux Slave name ${env.node_name}"
+            }
+        }
+        
+        stage('Test on Master') {
+            agent { label 'Master' }
+            steps {
+                echo "I am on a Windows Slave name ${env.node_name}"
+            }
+        }
+}
+}
